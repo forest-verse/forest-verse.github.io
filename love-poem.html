@@ -5,7 +5,7 @@
     <style>
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(45deg, #330000, #660000);
+            background-color: #8B0000;
             color: #FFD700;
             display: flex;
             justify-content: center;
@@ -14,21 +14,36 @@
             margin: 0;
             text-align: center;
             padding: 20px;
+            overflow: hidden;
         }
         .poem {
             background: rgba(0,0,0,0.3);
             border-radius: 25px;
             padding: 50px;
             max-width: 600px;
+            position: relative;
         }
         h1 {
             color: #FFD700;
             margin-bottom: 30px;
         }
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #FF0000;
+            animation: float 2s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
     </style>
 </head>
 <body>
     <div class="poem">
+        <div class="heart">❤️</div>
+        <div class="heart" style="top: 10%; left: 90%;">❤️</div>
+        <div class="heart" style="bottom: 10%; left: 10%;">❤️</div>
         <h1>Infinite Love</h1>
         <p>In the vastness of the universe so wide,</p>
         <p>My heart finds its home by your side.</p>
