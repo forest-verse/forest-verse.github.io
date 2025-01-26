@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Love Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cute Animal Love</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #8B0000;
@@ -10,41 +16,52 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            min-height: 100vh;
             text-align: center;
             overflow: hidden;
+            padding: 20px;
         }
         .container {
             background: rgba(0,0,0,0.3);
             border-radius: 25px;
-            padding: 50px;
+            padding: 30px;
+            width: 100%;
             max-width: 500px;
             position: relative;
+        }
+        .animals {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .animal {
+            font-size: 50px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
         a {
             color: #FFD700;
             text-decoration: underline;
             font-weight: bold;
+            font-size: 18px;
         }
-        .heart {
-            position: absolute;
-            font-size: 30px;
-            color: #FF0000;
-            animation: float 2s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        @media (max-width: 480px) {
+            .animal {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="heart">❤️</div>
-        <div class="heart" style="top: 10%; left: 90%;">❤️</div>
-        <div class="heart" style="bottom: 10%; left: 10%;">❤️</div>
-        <h1>Welcome to My Love Story</h1>
+        <div class="animals">
+            <div class="animal">🦌</div>
+            <div class="animal">🐼</div>
+        </div>
+        <h1>Cute Animal Love Story</h1>
         <p><a href="love-poem.html">Click here</a> for a beautiful love poem</p>
     </div>
 </body>
