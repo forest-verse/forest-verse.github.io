@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Forest of Love</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#8B0000">
+    <title>My Heart's Melody</title>
     <style>
-        * {
-            box-sizing: border-box;
+        html, body {
+            height: 100%;
             margin: 0;
-            padding: 0;
+            overscroll-behavior-y: contain;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
         }
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             background-color: #8B0000;
             color: #FFD700;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             text-align: center;
-            overflow: hidden;
             padding: 20px;
+            line-height: 1.6;
         }
         .container {
             background: rgba(0,0,0,0.3);
@@ -27,42 +30,29 @@
             padding: 30px;
             width: 100%;
             max-width: 500px;
-            position: relative;
-        }
-        .animals {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .animal {
-            font-size: 50px;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         a {
             color: #FFD700;
             text-decoration: underline;
             font-weight: bold;
             font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        a:active {
+            color: #FFC300;
         }
         @media (max-width: 480px) {
-            .animal {
-                font-size: 30px;
+            .container {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="animals">
-            <div class="animal">🦌</div>
-            <div class="animal">🐼</div>
-        </div>
-        <h1>Forest of Love</h1>
-        <p><a href="love-poem.html">Click here</a> for a beautiful forest love story</p>
+        <h1>My Heart's Melody</h1>
+        <p><a href="love-poem.html">Click here</a> to read a special message</p>
     </div>
 </body>
 </html>
