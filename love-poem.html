@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>A Love Poem</title>
+    <title>Cute Animal Poem</title>
     <style>
         * {
             box-sizing: border-box;
@@ -29,6 +29,19 @@
             max-width: 600px;
             position: relative;
         }
+        .animals {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .animal {
+            font-size: 50px;
+            animation: float 2s infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
         h1 {
             color: #FFD700;
             margin-bottom: 20px;
@@ -38,19 +51,9 @@
             margin-bottom: 10px;
             font-size: 16px;
         }
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            color: #FF0000;
-            animation: float 2s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
         @media (max-width: 480px) {
-            .poem {
-                padding: 20px;
+            .animal {
+                font-size: 30px;
             }
             h1 {
                 font-size: 20px;
@@ -58,27 +61,25 @@
             p {
                 font-size: 14px;
             }
-            .heart {
-                font-size: 15px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="poem">
-        <div class="heart">❤️</div>
-        <div class="heart" style="top: 10%; left: 90%;">❤️</div>
-        <div class="heart" style="bottom: 10%; left: 10%;">❤️</div>
-        <h1>Infinite Love</h1>
-        <p>In the vastness of the universe so wide,</p>
-        <p>My heart finds its home by your side.</p>
-        <p>Like stars that shine with endless light,</p>
-        <p>Our love burns forever, burning bright.</p>
+        <div class="animals">
+            <div class="animal">🦌</div>
+            <div class="animal">🐼</div>
+        </div>
+        <h1>Love in the Animal Kingdom</h1>
+        <p>A reindeer and a red panda, so rare and sweet,</p>
+        <p>Their love a story that makes hearts beat.</p>
+        <p>In forests deep and mountains high,</p>
+        <p>Their connection stronger than the sky.</p>
         <br>
-        <p>Galaxies may drift and planets may spin,</p>
-        <p>But my love for you will always begin</p>
-        <p>In this moment, in this space,</p>
-        <p>Forever held in your embrace.</p>
+        <p>Different as they are, yet perfectly matched,</p>
+        <p>A love so pure, forever attached.</p>
+        <p>Dancing through life with joy and grace,</p>
+        <p>Finding home in each other's embrace.</p>
     </div>
 </body>
 </html>
