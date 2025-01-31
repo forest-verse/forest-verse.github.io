@@ -35,7 +35,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-size: cover;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
         }
@@ -70,37 +70,19 @@
         .nav-btn:hover {
             background-color: rgba(255,215,0,0.7);
         }
-        .heart-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 5;
-            opacity: 0.3;
-            overflow: hidden;
-        }
-        .heart {
-            position: absolute;
-            color: #8B0000;
-            font-size: 30px;
-            animation: heartFloat 5s infinite;
-            opacity: 0.5;
-        }
-        @keyframes heartFloat {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-            100% { transform: translateY(0) rotate(-10deg); }
-        }
     </style>
 </head>
 <body>
-    <div class="heart-bg" id="heartBackground"></div>
     <div class="slideshow-container">
-        <div class="slide active" style="background-image: url('image1.jpg');"></div>
-        <div class="slide" style="background-image: url('image2.jpg');"></div>
-        <div class="slide" style="background-image: url('image3.jpg');"></div>
+        <div class="slide active">
+            <img src="dexter morgan.jpg" alt="Dexter Morgan">
+        </div>
+        <div class="slide">
+            <img src="Dexter Morgen Hello Kitty icon.jpg" alt="Dexter Morgen Hello Kitty">
+        </div>
+        <div class="slide">
+            <img src="brian moser.jpg" alt="Brian Moser">
+        </div>
     </div>
     <div class="navigation">
         <button class="nav-btn prev">Previous</button>
@@ -108,41 +90,47 @@
     </div>
 
     <script>
-        function createHearts() {
-            const background = document.getElementById('heartBackground');
-            const heartCount = 20;
-
-            for (let i = 0; i < heartCount; i++) {
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.innerHTML = '❤️';
-                
-                heart.style.left = `${Math.random() * 100}%`;
-                heart.style.top = `${Math.random() * 100}%`;
-                
-                heart.style.animationDelay = `${Math.random() * 5}s`;
-                heart.style.animationDuration = `${5 + Math.random() * 5}s`;
-                
-                const size = 20 + Math.random() * 40;
-                heart.style.fontSize = `${size}px`;
-
-                background.appendChild(heart);
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
-            createHearts();
-
             const slides = document.querySelectorAll('.slide');
             const prevBtn = document.querySelector('.prev');
             const nextBtn = document.querySelector('.next');
+            const slideContainer = document.querySelector('.slideshow-container');
             let currentSlide = 0;
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const minSwipeDistance = 50;
 
             function showSlide(index) {
                 slides.forEach(slide => slide.classList.remove('active'));
                 slides[index].classList.add('active');
             }
 
+            function handleSwipe() {
+                const swipeDistance = touchEndX - touchStartX;
+                
+                if (Math.abs(swipeDistance) > minSwipeDistance) {
+                    if (swipeDistance > 0) {
+                        // Swipe right (previous slide)
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    } else {
+                        // Swipe left (next slide)
+                        currentSlide = (currentSlide + 1) % slides.length;
+                    }
+                    showSlide(currentSlide);
+                }
+            }
+
+            // Touch events
+            slideContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+            }, { passive: true });
+
+            slideContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].clientX;
+                handleSwipe();
+            }, { passive: true });
+
+            // Button navigation
             nextBtn.addEventListener('click', () => {
                 currentSlide = (currentSlide + 1) % slides.length;
                 showSlide(currentSlide);
