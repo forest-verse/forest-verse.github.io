@@ -35,7 +35,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-size: contain;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
@@ -44,9 +44,9 @@
             z-index: 10;
         }
         .slide img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+            width: 100%; 
+            height: 100%;
+            object-fit: cover;
         }
         .navigation {
             position: fixed;
@@ -75,16 +75,13 @@
 <body>
     <div class="slideshow-container">
         <div class="slide active">
-            <img src="pinterest_image.jpg" alt="Pinterest Image 1">
+            <img src="6d869ca3c5bfda8932e8bca184d32807.jpg" alt="Pinterest Image 1">
         </div>
         <div class="slide">
-            <img src="image1.jpg" alt="Pinterest Image 2">
+            <img src="5b728601a462b2d87112e20ec52d49f6.jpg" alt="Pinterest Image 2">
         </div>
         <div class="slide">
-            <img src="image2.jpg" alt="Pinterest Image 3">
-        </div>
-        <div class="slide">
-            <img src="image3.jpg" alt="Pinterest Image 4">
+            <img src="4ae4d5421f05c946d5f4ff9e0c2c93f0.jpg" alt="Pinterest Image 3">
         </div>
     </div>
     <div class="navigation">
