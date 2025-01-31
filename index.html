@@ -2,137 +2,45 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#4B0000">
-    <title>Our Memories</title>
+    <title>Image Test</title>
     <style>
-        * {
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        html, body {
             height: 100%;
-            width: 100%;
-            overflow: hidden;
-            background-color: #4B0000;
+            background: red;
         }
-        .slideshow-container {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .image-container {
             width: 100%;
             height: 100%;
-            background-color: #4B0000;
-        }
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.7s ease-in-out;
-            background-size: cover;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-        }
-        .slide.active {
-            opacity: 1;
-            z-index: 10;
-        }
-        .navigation {
-            position: fixed;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            z-index: 20;
-        }
-        .nav-btn {
-            background-color: rgba(255,215,0,0.5);
-            color: #4B0000;
-            border: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .nav-btn:hover {
-            background-color: rgba(255,215,0,0.7);
         }
     </style>
 </head>
 <body>
-    <div class="slideshow-container">
-        <div class="slide active" style="background-image: url('pinterest_image.jpg');"></div>
-        <div class="slide" style="background-image: url('image1.jpg');"></div>
-        <div class="slide" style="background-image: url('image2.jpg');"></div>
-        <div class="slide" style="background-image: url('image3.jpg');"></div>
-    </div>
-    <div class="navigation">
-        <button class="nav-btn prev">Previous</button>
-        <button class="nav-btn next">Next</button>
-    </div>
-
+    <div class="image-container" id="imageDisplay"></div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const slides = document.querySelectorAll('.slide');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
-            const slideContainer = document.querySelector('.slideshow-container');
-            let currentSlide = 0;
-            let touchStartX = 0;
-            let touchEndX = 0;
-            const minSwipeDistance = 50;
+            const imageContainer = document.getElementById('imageDisplay');
+            const imagePath = 'pinterest_image.jpg';
+            
+            // Try multiple methods to display the image
+            imageContainer.style.backgroundImage = `url('${imagePath}')`;
+            
+            // Create an img element as a fallback
+            const img = document.createElement('img');
+            img.src = imagePath;
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'contain';
+            imageContainer.appendChild(img);
 
-            function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                slides[index].classList.add('active');
-            }
-
-            function handleSwipe() {
-                const swipeDistance = touchEndX - touchStartX;
-                
-                if (Math.abs(swipeDistance) > minSwipeDistance) {
-                    if (swipeDistance > 0) {
-                        // Swipe right (previous slide)
-                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                    } else {
-                        // Swipe left (next slide)
-                        currentSlide = (currentSlide + 1) % slides.length;
-                    }
-                    showSlide(currentSlide);
-                }
-            }
-
-            // Touch events
-            slideContainer.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-            }, { passive: true });
-
-            slideContainer.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].clientX;
-                handleSwipe();
-            }, { passive: true });
-
-            // Button navigation
-            nextBtn.addEventListener('click', () => {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            });
-
-            prevBtn.addEventListener('click', () => {
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                showSlide(currentSlide);
-            });
-
-            // Optional: Auto-advance slides every 5 seconds
-            setInterval(() => {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }, 5000);
+            // Log for debugging
+            console.log('Image path:', imagePath);
+            img.onload = () => console.log('Image loaded successfully');
+            img.onerror = () => console.error('Image failed to load');
         });
     </script>
 </body>
