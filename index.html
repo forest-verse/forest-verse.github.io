@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Image Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dexter00</title>
     <style>
-        body, html {
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
             margin: 0;
-            padding: 0;
-            height: 100%;
-            background: red;
+            padding: 20px;
         }
         .image-container {
-            width: 100%;
-            height: 100%;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .caption {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+        .site-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #4B0000;
         }
     </style>
 </head>
 <body>
-    <div class="image-container" id="imageDisplay"></div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const imageContainer = document.getElementById('imageDisplay');
-            const imagePath = 'pinterest_image.jpg';
-            
-            // Try multiple methods to display the image
-            imageContainer.style.backgroundImage = `url('${imagePath}')`;
-            
-            // Create an img element as a fallback
-            const img = document.createElement('img');
-            img.src = imagePath;
-            img.style.width = '100%';
-            img.style.height = '100%';
-            img.style.objectFit = 'contain';
-            imageContainer.appendChild(img);
-
-            // Log for debugging
-            console.log('Image path:', imagePath);
-            img.onload = () => console.log('Image loaded successfully');
-            img.onerror = () => console.error('Image failed to load');
-        });
-    </script>
+    <div class="site-title">Dexter00</div>
+    <div class="image-container">
+        <img src="pinterest_image.jpg" alt="Our Picture">
+        <div class="caption">Our Special Moment</div>
+    </div>
 </body>
 </html>
