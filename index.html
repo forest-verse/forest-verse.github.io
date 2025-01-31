@@ -32,9 +32,6 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.7s ease-in-out;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -42,11 +39,6 @@
         .slide.active {
             opacity: 1;
             z-index: 10;
-        }
-        .slide img {
-            width: 100%; 
-            height: 100%;
-            object-fit: cover;
         }
         .navigation {
             position: fixed;
@@ -74,18 +66,10 @@
 </head>
 <body>
     <div class="slideshow-container">
-        <div class="slide active">
-            <img src="pinterest_image.jpg" alt="Pinterest Image 1">
-        </div>
-        <div class="slide">
-            <img src="image1.jpg" alt="Pinterest Image 2">
-        </div>
-        <div class="slide">
-            <img src="image2.jpg" alt="Pinterest Image 3">
-        </div>
-        <div class="slide">
-            <img src="image3.jpg" alt="Pinterest Image 4">
-        </div>
+        <div class="slide active" style="background-image: url('pinterest_image.jpg');"></div>
+        <div class="slide" style="background-image: url('image1.jpg');"></div>
+        <div class="slide" style="background-image: url('image2.jpg');"></div>
+        <div class="slide" style="background-image: url('image3.jpg');"></div>
     </div>
     <div class="navigation">
         <button class="nav-btn prev">Previous</button>
