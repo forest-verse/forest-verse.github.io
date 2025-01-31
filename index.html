@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#8B0000">
-    <title>My Heart's Melody</title>
+    <title>Memories</title>
     <style>
         html, body {
             height: 100%;
@@ -24,45 +24,101 @@
             padding: 20px;
             line-height: 1.6;
         }
-        .container {
+        .slideshow-container {
             background: rgba(0,0,0,0.3);
             border-radius: 25px;
             padding: 30px;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            height: 400px;
         }
-        a {
-            color: #FFD700;
-            text-decoration: underline;
-            font-weight: bold;
-            font-size: 18px;
-            transition: color 0.3s ease;
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
-        a:active {
-            color: #FFC300;
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-            }
+        .slide img {
+            max-width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .nav-btn {
+            background-color: rgba(255,215,0,0.5);
+            color: #8B0000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .nav-btn:hover {
+            background-color: rgba(255,215,0,0.7);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>My Heart's Melody</h1>
-        <p><a href="love-poem.html">Click here</a> to read a special message</p>
+    <div class="slideshow-container">
+        <div class="slide active">
+            <img src="image1.jpg" alt="Memory 1">
+        </div>
+        <div class="slide">
+            <img src="image2.jpg" alt="Memory 2">
+        </div>
+        <div class="slide">
+            <img src="image3.jpg" alt="Memory 3">
+        </div>
+        <div class="navigation">
+            <button class="nav-btn prev">Previous</button>
+            <button class="nav-btn next">Next</button>
+        </div>
     </div>
-    <iframe 
-        style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; border-radius:12px;" 
-        src="https://open.spotify.com/embed/track/3JsydWaf2Ev4ehaLUjj3SY?utm_source=generator" 
-        width="300" 
-        height="80" 
-        frameBorder="0" 
-        allowfullscreen="" 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
-    </iframe>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                // Remove active class from all slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                
+                // Add active class to current slide
+                slides[index].classList.add('active');
+            }
+
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            });
+        });
+    </script>
 </body>
 </html>
